@@ -4,6 +4,6 @@
 format: jb-book
 root: firstpage
 chapters:
-- file: introduction
+- file: 01_batch_least_squares
 
 
