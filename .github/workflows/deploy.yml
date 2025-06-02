@@ -27,14 +27,14 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          # pip install -r requirements.txt  # If you have a requirements.txt file for your book
+          pip install -r requirements.txt  # If you have a requirements.txt file for your book
           # If you don't have a requirements.txt, install Jupyter Book directly:
           # pip install jupyter-book ghp-import # ghp-import is only needed for older deploy methods
           # For the modern deploy-pages action, ghp-import isn't strictly necessary for the deployment step itself
           # but can be useful for other things or if you ever revert to an older deployment method.
           # It's often included in general Jupyter Book installation instructions.
           # For the actions/deploy-pages@v4, you primarily need jupyter-book.
-          pip install jupyter-book
+          # pip install jupyter-book
 
       - name: Build the book
         run: |
