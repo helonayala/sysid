@@ -1,5 +1,7 @@
 # Updating This Jupyter Book Site
 
+**Disclaimer:** the info below is dedicated for me to remember how to use jupyterbooks to update the website, or whoever feels encouraged to post any script to the project. 
+
 This website is built using [Jupyter Book](https://jupyterbook.org/) from `.ipynb` notebooks and hosted on GitHub Pages. The update process is designed to be straightforward with automated builds using the direct Google Colab to GitHub integration.
 
 ## How to Update the Content
