@@ -6,6 +6,7 @@ root: README
 chapters:
 - file: batch_least_squares
 - file: excitation_signals
+- file: statistical_testing
 - file: case_studies
 - file: how_to_update
 
