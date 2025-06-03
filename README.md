@@ -10,6 +10,6 @@ Students can easily navigate the material and click the [![Open In Colab](https:
 
 I hope you find this resource valuable. The methods are demonstrated using **real-world data**, allowing you to explore both the **potentialities and limitations** of the techniques discussed.
 
-# I found errors
+# Reporting Errors or Issues
 
-Plase send issues anytime. Cheers
+Should you identify any errors, inconsistencies, or areas for improvement within these notes, please submit them through the "Issues" tab of this repository. Your contributions to the accuracy and clarity of this material are greatly appreciated.
