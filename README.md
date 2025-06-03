@@ -10,5 +10,6 @@ Students can easily navigate the material and click the [![Open In Colab](https:
 
 I hope you find this resource valuable. The methods are demonstrated using **real-world data**, allowing you to explore both the **potentialities and limitations** of the techniques discussed.
 
-```{tableofcontents}
-```
+# I found errors
+
+Plase send issues anytime. Cheers
