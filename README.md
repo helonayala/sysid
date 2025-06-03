@@ -1,4 +1,4 @@
-# SYSID: an introductory course on system identification
+# Welcome
 
 Welcome! This repository hosts the class notes for an introduction to the fundamental concepts of **system identification**.
 
