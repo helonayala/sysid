@@ -31,4 +31,6 @@ html:
   use_issues_button: true
   use_repository_button: true
 
-copyright: "Built using [jupyterbook](https://jupyterbook.org)"
+sphinx:
+  config:
+    html_show_copyright: false
