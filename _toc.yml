@@ -14,6 +14,7 @@ chapters:
 - file: case_studies
   sections:
   - file: ball_and_hoop
+  - file: IFAC2015_LTV
 - file: how_to_update
 
 
