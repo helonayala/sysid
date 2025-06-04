@@ -12,6 +12,8 @@ chapters:
   sections:
   - file: orthogonal_least_squares 
 - file: case_studies
+  sections:
+  - file: ball_and_hoop
 - file: how_to_update
 
 
