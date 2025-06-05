@@ -5,4 +5,4 @@ scipy
 tqdm
 pandas
 torch
-sklearn
+scikit-learn
