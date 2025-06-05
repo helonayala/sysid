@@ -11,6 +11,7 @@ chapters:
 - file: narmax 
   sections:
   - file: orthogonal_least_squares 
+  - file: frols 
 - file: case_studies
   sections:
   - file: ball_and_hoop
