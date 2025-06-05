@@ -13,6 +13,7 @@ chapters:
   - file: orthogonal_least_squares 
   - file: frols 
   - file: NARX_FROLS_Model
+- file: ANN_narx
 - file: case_studies
   sections:
   - file: ball_and_hoop
