@@ -6,3 +6,6 @@ tqdm
 pandas
 torch
 scikit-learn
+jax
+jaxlib
+diffrax
