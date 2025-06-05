@@ -4,3 +4,5 @@ numpy
 scipy
 tqdm
 pandas
+torch
+sklearn
