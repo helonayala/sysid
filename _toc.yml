@@ -16,6 +16,7 @@ chapters:
 - file: grey_box
   sections:
   - file: lagrange
+  - file: multiple_shooting
 - file: ANN_narx
 - file: case_studies
   sections:
