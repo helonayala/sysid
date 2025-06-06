@@ -9,3 +9,4 @@ scikit-learn
 jax
 jaxlib
 diffrax
+control
