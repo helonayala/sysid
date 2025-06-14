@@ -4,11 +4,11 @@ Welcome! This repository hosts the class notes for an introduction to the fundam
 
 To foster a **hands-on learning experience**, these notes include adaptable Python scripts. You're encouraged to build upon this **starter code**. 
 
-Originally developed in MATLAB, the scripts have been translated to Python (with assistance from LLMs) and are now readily accessible online within these notes. 
+By the end of each script the reader will find activities to enhance learning experience. They use real-world data, detailed in the Case Studies section of this page, allowing you to explore both the **potentialities and limitations** of the techniques discussed.
+
+Originally developed in MATLAB and R, the scripts have been translated to Python (with assistance from LLMs) so they are more accessible and readily available online within these notes. 
 
 Students can easily navigate the material and click the ![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg) to start experimenting directly in their browser.
-
-I hope you find this resource valuable. The methods are demonstrated using **real-world data**, allowing you to explore both the **potentialities and limitations** of the techniques discussed.
 
 # Reporting Errors or Issues
 
