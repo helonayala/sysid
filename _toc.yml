@@ -4,19 +4,27 @@
 format: jb-book
 root: README
 chapters:
-- file: batch_least_squares
-- file: excitation_signals
-- file: statistical_testing
-- file: recursive_least_squares
+- file: linear
+  sections:
+  - file: batch_least_squares
+  - file: recursive_least_squares
+  - file: linear_activities
+- file: practical_aspects
+  sections:
+  - file: excitation_signals
+  - file: statistical_testing
+  - file: practical_activities
 - file: narmax 
   sections:
   - file: orthogonal_least_squares 
   - file: frols 
   - file: NARX_FROLS_Model
+  - file: NARMAX_activities
 - file: grey_box
   sections:
   - file: lagrange
   - file: multiple_shooting
+  # - file: grey_activities
 - file: ANN_narx
 - file: case_studies
   sections:
