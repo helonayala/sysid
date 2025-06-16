@@ -18,8 +18,8 @@ chapters:
   sections:
   - file: orthogonal_least_squares 
   - file: frols 
-  - file: NARX_FROLS_Model
-  - file: NARMAX_activities
+  - file: narx_frols_model
+  - file: narmax_activities
 - file: grey_box
   sections:
   - file: lagrange
