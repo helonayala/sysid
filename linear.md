@@ -74,7 +74,7 @@ This can be demonstrated by solving the least squares problem of the error. The 
 
 ## Recursive Least Squares (RLS)
 
-The RLS algorithm updates the parameter estimates at each time step as new data becomes available. The algorithm proceeds as follows, starting with initial values for $P(0)$ and $\hat{ \pmb \theta}(0)$:
+The RLS algorithm updates the parameter estimates at each time step as new data becomes available. The algorithm proceeds as follows, starting with initial values for $P(0)$ and $\hat{ \theta}(0)$:
 
 1.  **Measure** current input/output of the system: $y(k),u(k)$.
 2.  **Update** the regression vector, $\phi(k+1)$, using the new measurements.
@@ -85,6 +85,6 @@ The RLS algorithm updates the parameter estimates at each time step as new data 
 
 **Tuning:**
 * **Initial Parameters**: If no prior information is available, $\hat{ \theta}(0)$ can be initialized with small values.
-* **Initial Covariance Matrix$)**: This matrix reflects the confidence in the initial parameter estimates. If initial estimates are poor, $P(0)$ should be initialized with high values on its main diagonal. A common practice is to set $P(0) = mI$, where $I$ is the identity matrix and $m$ is a large number (e.g., greater than $10^{3}$). As the estimation improves, the elements of $P(k)$ and the estimator gain $K(k)$ tend to zero, leading to $\hat{ \pmb \theta}(k+1) \approx \hat{ \pmb \theta}(k) $.
+* **Initial Covariance Matrix**: This matrix reflects the confidence in the initial parameter estimates. If initial estimates are poor, $P(0)$ should be initialized with high values on its main diagonal. A common practice is to set $P(0) = mI$, where $I$ is the identity matrix and $m$ is a large number (e.g., greater than $10^{3}$). As the estimation improves, the elements of $P(k)$ and the estimator gain $K(k)$ tend to zero, leading to $\hat{ \theta}(k+1) \approx \hat{ \theta}(k) $.
 
 Covariance resetting, or other strategies like forgetting factor, but not only, can be used to adapt RLS to model tive-variant systems.
