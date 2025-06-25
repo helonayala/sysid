@@ -18,13 +18,13 @@ The components of this equation are defined as follows:
 
     $$
     \phi(k) = \begin{bmatrix}
-    -y(k-1) \\
-    -y(k-2) \\
-    \vdots \\
-    -y(k-na) \\
-    u(k-1) \\
-    u(k-2) \\
-    \vdots \\
+    -y(k-1) & 
+    -y(k-2) &
+    \hdots &
+    -y(k-na) &
+    u(k-1) &
+    u(k-2) &
+    \hdots &
     u(k-nb)
     \end{bmatrix}
     $$
