@@ -31,7 +31,7 @@ The components of this equation are defined as follows:
 
     $$
     \pmb \theta = \begin{bmatrix}
-    a_1 & \dots & a_{na} & b_1 & \vdots & b_{nb}
+    a_1 & \dots & a_{na} & b_1 & \dots & b_{nb}
     \end{bmatrix}^\intercal
     $$
 
