@@ -18,23 +18,21 @@ The components of this equation are defined as follows:
 
     $$
     \phi(k) = \begin{bmatrix}
-    -y(k-1) & 
-    -y(k-2) &
-    \hdots &
+    -y(k-1) &
+    \dots &
     -y(k-na) &
     u(k-1) &
-    u(k-2) &
-    \hdots &
+    \dots &
     u(k-nb)
-    \end{bmatrix}
+    \end{bmatrix}^\intercal
     $$
   
 * **Vector of Model Parameters**: A column vector containing the model coefficients to be estimated.
 
     $$
     \pmb \theta = \begin{bmatrix}
-    a_1 \\ a_2 \\ \vdots \\ a_{na} \\ b_1 \\ b_2 \\ \vdots \\ b_{nb}
-    \end{bmatrix}
+    a_1 & \dots & a_{na} & b_1 & \vdots & b_{nb}
+    \end{bmatrix}^\intercal
     $$
 
 * **Regression Matrix**: A matrix constructed by stacking the transposed regression vectors, $\phi^\intercal(k)$, for a series of measurements. Assuming $N$ total measurements are available, the matrix is formed for time steps from $p$ to $N$, where $p=1+\max(na,nb)$.
