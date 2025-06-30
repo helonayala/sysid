@@ -25,7 +25,10 @@ chapters:
   - file: lagrange
   - file: multiple_shooting
   - file: grey-box-activity
-- file: ANN_narx
+- file: ann
+  sections:
+  - file: ANN_narx
+  - file: ANN_activities
 - file: case_studies
   sections:
   - file: ball_and_hoop
