@@ -24,7 +24,7 @@ chapters:
   sections:
   - file: lagrange
   - file: multiple_shooting
-  # - file: grey_activities
+  - file: grey-box-activity
 - file: ANN_narx
 - file: case_studies
   sections:
