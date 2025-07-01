@@ -7,8 +7,8 @@
 
 2.  **NARX Model Construction (FROLS)**
     * Build a NARX model for the "ball and hoop" dataset.
-    * You must use the Forward Regression Orthogonal Least Squares (FROLS) algorithm provided in [this example](https://helonayala.github.io/sysid/NARX_FROLS_Model.html).
+    * You must use the Forward Regression Orthogonal Least Squares (FROLS) algorithm provided in [this example](https://helonayala.github.io/sysid/frols.html).
 
 3.  **NARMAX Model Extension (Extended FROLS)**
-    * Extend the [FROLS implementation](https://helonayala.github.io/sysid/NARX_FROLS_Model.html) to build a NARMAX model.
+    * Extend the [FROLS implementation](https://helonayala.github.io/sysid/frols.html) to build a NARMAX model.
     * This is a two-step process: first, implement the base NARX model using FROLS, and then incorporate noise terms to create the full NARMAX model. 
