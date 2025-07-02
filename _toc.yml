@@ -26,6 +26,7 @@ chapters:
   - file: lagrange
   - file: multiple_shooting
   - file: grey-box-activity
+  - file: grey_box_activity_1
 - file: ann
   sections:
   - file: ANN_narx
