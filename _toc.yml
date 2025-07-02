@@ -27,7 +27,7 @@ chapters:
   - file: multiple_shooting
   - file: grey-box-activity
   - file: grey_box_activity_1
-  - file: grey_box_activity_2
+  - file: grey_box_activity_2a
 - file: ann
   sections:
   - file: ANN_narx
