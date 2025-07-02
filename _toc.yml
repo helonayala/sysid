@@ -21,6 +21,7 @@ chapters:
   - file: narx_frols_model
   - file: narmax_activities
   - file: narmax_activity_1
+  - file: narmax_activity_2
 - file: grey_box
   sections:
   - file: lagrange
