@@ -8,7 +8,15 @@ By the end of each script the reader will find activities to enhance learning ex
 
 Originally developed in MATLAB and R, the scripts have been translated to Python (with assistance from LLMs) so they are more accessible and readily available online within these notes. 
 
+# Running the notebooks
+
 Students can easily navigate the material and click the ![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg) to start experimenting directly in their browser.
+
+They can be run online using google infrastructure, or locally using docker 
+
+`sudo docker run --gpus=all --network=host us-docker.pkg.dev/colab-images/public/runtime`
+
+and then pasting the URL in colab's dialog.
 
 # Reporting Errors or Issues
 
