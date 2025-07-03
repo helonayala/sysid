@@ -29,6 +29,7 @@ chapters:
   - file: grey-box-activity
   - file: grey_box_activity_1
   - file: grey_box_activity_2a
+  - file: grey_box_activity_2b
 - file: ann
   sections:
   - file: ANN_narx
