@@ -8,7 +8,8 @@ chapters:
   sections:
   - file: batch_least_squares
   - file: recursive_least_squares
-  - file: linear_activities
+  - file: linear_activities_RLS
+  - file: linear_activities_BLS
 - file: practical_aspects
   sections:
   - file: excitation_signals
