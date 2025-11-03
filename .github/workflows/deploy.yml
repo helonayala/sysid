@@ -1,52 +1,83 @@
 name: Deploy Jupyter Book
 
 on:
-  push: # Trigger the workflow on push events
+  push:
     branches:
-      - main # Or master, or whatever your default branch is called
-      # You can add other branches here if needed:
-      # - develop
+      - main
 
 jobs:
   deploy-book:
-    runs-on: ubuntu-latest # Use the latest Ubuntu runner
+    runs-on: ubuntu-latest
 
-    permissions: # Permissions needed for the job
-      pages: write      # to deploy to GitHub Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
+    permissions:
+      pages: write
+      id-token: write
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4 # Checks out your repository under $GITHUB_WORKSPACE
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10' # Or '3.9', '3.11', etc. Choose a recent stable version.
+          python-version: '3.10'
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
 
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install -r requirements.txt  # If you have a requirements.txt file for your book
-          # If you don't have a requirements.txt, install Jupyter Book directly:
-          # pip install jupyter-book ghp-import # ghp-import is only needed for older deploy methods
-          # For the modern deploy-pages action, ghp-import isn't strictly necessary for the deployment step itself
-          # but can be useful for other things or if you ever revert to an older deployment method.
-          # It's often included in general Jupyter Book installation instructions.
-          # For the actions/deploy-pages@v4, you primarily need jupyter-book.
-          # pip install jupyter-book
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            pip install jupyter-book
+          fi
+
+      - name: Note about ACTIONS_STEP_DEBUG
+        run: |
+          echo "To enable verbose action step logs set the repository secret ACTIONS_STEP_DEBUG=true"
+          echo "Go to Settings → Secrets and variables → Actions → New repository secret"
+
+      # If your book is in a subdirectory, set BOOK_DIR env or uncomment below:
+      # env:
+      #   BOOK_DIR: docs
 
       - name: Build the book
+        id: build
         run: |
-          jupyter-book build .  # Assumes your book is in the root. If in a subdirectory like 'my_book/', use 'jupyter-book build my_book/'
+          set -e
+          BOOK_DIR="${BOOK_DIR:-.}"
+          echo "Building book in: $BOOK_DIR"
+          jupyter-book build "$BOOK_DIR"
+          if [ -d "$BOOK_DIR/_build/html" ]; then
+            echo "html_exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "html_exists=false" >> $GITHUB_OUTPUT
+            echo "ERROR: $BOOK_DIR/_build/html not found"
+            ls -la "$BOOK_DIR/_build" || true
+            exit 1
+          fi
+
+      - name: Show build output (debug)
+        if: always()
+        run: |
+          echo "Workspace root:"
+          ls -la
+          echo "_build tree (if present):"
+          ls -la _build || true
+          echo "_build/html tree (if present):"
+          ls -la _build/html || true
 
       - name: Upload artifact
+        if: ${{ steps.build.outputs.html_exists == 'true' }}
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '_build/html' # Path to the built book's HTML files
+          path: '_build/html'
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        # No 'with' section needed here if you used upload-pages-artifact correctly.
-        # The action will automatically find the artifact.
