@@ -1,52 +1,49 @@
 name: Deploy Jupyter Book
 
 on:
-  push: # Trigger the workflow on push events
+  push:
     branches:
-      - main # Or master, or whatever your default branch is called
-      # You can add other branches here if needed:
-      # - develop
+      - main
 
 jobs:
   deploy-book:
-    runs-on: ubuntu-latest # Use the latest Ubuntu runner
+    runs-on: ubuntu-latest
 
-    permissions: # Permissions needed for the job
-      pages: write      # to deploy to GitHub Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
+    permissions:
+      pages: write
+      id-token: write
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4 # Checks out your repository under $GITHUB_WORKSPACE
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10' # Or '3.9', '3.11', etc. Choose a recent stable version.
+          python-version: '3.10'
 
       - name: Install dependencies
         run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt  # If you have a requirements.txt file for your book
-          # If you don't have a requirements.txt, install Jupyter Book directly:
-          # pip install jupyter-book ghp-import # ghp-import is only needed for older deploy methods
-          # For the modern deploy-pages action, ghp-import isn't strictly necessary for the deployment step itself
-          # but can be useful for other things or if you ever revert to an older deployment method.
-          # It's often included in general Jupyter Book installation instructions.
-          # For the actions/deploy-pages@v4, you primarily need jupyter-book.
-          # pip install jupyter-book
+          set -euxo pipefail
+          python -m pip install --upgrade pip
+          # Install your dependencies if they exist, but don't fail if optional packages break
+          if [ -f requirements.txt ]; then
+            python -m pip install -r requirements.txt || echo "⚠️ Some optional deps failed, continuing..."
+          fi
+          # Ensure stable Jupyter Book versions are always installed
+          python -m pip install "jupyter-book==1.0.2" "sphinx==7.3.7" "myst-nb==1.1.1"
 
       - name: Build the book
         run: |
-          jupyter-book build .  # Assumes your book is in the root. If in a subdirectory like 'my_book/', use 'jupyter-book build my_book/'
+          jupyter-book build docs/ --all
+        env:
+          PYTHONWARNINGS: ignore
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '_build/html' # Path to the built book's HTML files
+          path: 'docs/_build/html'
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        # No 'with' section needed here if you used upload-pages-artifact correctly.
-        # The action will automatically find the artifact.
