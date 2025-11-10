@@ -26,12 +26,10 @@ jobs:
         run: |
           set -euxo pipefail
           python -m pip install --upgrade pip
-          # Install your dependencies if they exist, but don't fail if optional packages break
           if [ -f requirements.txt ]; then
             python -m pip install -r requirements.txt || echo "⚠️ Some optional deps failed, continuing..."
           fi
-          # Ensure stable Jupyter Book versions are always installed
-          python -m pip install "jupyter-book==1.0.2" "sphinx==7.3.7" "myst-nb==1.1.1"     
+          python -m pip install "jupyter-book==1.0.2" "sphinx==7.3.7" "myst-nb==1.1.1"
 
       - name: Build the book
         run: |
@@ -39,10 +37,21 @@ jobs:
         env:
           PYTHONWARNINGS: ignore
 
+      # 🧩 Debug step — see where _build/html is generated
+      - name: Check build output
+        run: |
+          echo "Listing build directories:"
+          ls -R | grep _build || echo "⚠️ No _build directory found"
+
+      # 🧩 Fail-fast check — stop early if no HTML was produced
+      - name: Verify build success
+        run: |
+          test -d _build/html || (echo "❌ No HTML built — check Jupyter Book logs" && exit 1)
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'docs/_build/html'
+          path: '_build/html'
 
       - name: Deploy to GitHub Pages
         id: deployment
