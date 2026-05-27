@@ -29,15 +29,6 @@ where $F(.)$ represents the nonlinear neural network mapping velocity ($\omega$)
 
 ---
 
-## 3. 1/4 drone case study
-
-* Use the script for obtaining the state space equations for the [1/4 drone](https://helonayala.github.io/sysid/lagrange_quarter_drone.html)
-* The references for the angle and energy terms in this script are given in [this PPT](docs/references_quarter_drone.pptx)
-* Use the code provided using [multiple-shooting](https://helonayala.github.io/sysid/multiple_shooting.html) to identify the physics-related parameters with the closed-loop data
-* RLS activity
-  * Note that the dicretized input-output model (u: motor %; y: angular deflection) is linear in the parameters. Adapt the [RLS code](https://helonayala.github.io/sysid/recursive_least_squares.html), particularly the regression vector, so that one can use the RLS to estimate the physical parameters of the system recursively;
-  * Use the same input output as before, but the linear model (do not change the regression vector). Considering that the linearization leads to a LTV system, estimate the a's and b's for the linear system and observe how they change with respect to the angular position (output).
-
 ## 3. 1/4 Drone Case Study
 
 * Inspect measured data in the respective case study section;
