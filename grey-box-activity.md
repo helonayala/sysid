@@ -30,10 +30,9 @@ where $F(.)$ represents the nonlinear neural network mapping velocity ($\omega$)
 ---
 
 ## 3. 1/4 drone case study
-* Use the script for obtaining the state space equations for the (1/4 drone)[https://helonayala.github.io/sysid/lagrange_quarter_drone.html]
-* The references for the angle and energy terms in this script are given in (this PPT)[docs/references_quarter_drone.pptx]
-* Use the code provided using (multiple-shooting)[https://helonayala.github.io/sysid/multiple_shooting.html] to identify the physics-related parameters with the closed-loop data
 
-
+* Use the script for obtaining the state space equations for the [1/4 drone](https://helonayala.github.io/sysid/lagrange_quarter_drone.html)
+* The references for the angle and energy terms in this script are given in [this PPT](docs/references_quarter_drone.pptx)
+* Use the code provided using [multiple-shooting](https://helonayala.github.io/sysid/multiple_shooting.html) to identify the physics-related parameters with the closed-loop data
 
 
