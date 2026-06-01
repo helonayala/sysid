@@ -1,8 +1,12 @@
 # Activities - BLS
 
-This activity builds upon the batch least squares system identification example. You will enhance the existing code by creating reusable functions and applying the methodology to real-world data.
+This activity builds upon the batch least squares system identification example. 
 
-1.  **Implement a Regression Matrix Function:**
+You will enhance the existing code by creating reusable functions and applying the methodology to real-world data.
+
+1. Improve the baseline code (using the simulated dataset)
+
+a.  **Implement a Regression Matrix Function:**
     *   Create a Python function that takes the input time series data (`u`), the output time series data (`y`), and the model orders ($n_a$ for the autoregressive part and $n_b$ for the exogenous part) as arguments.
     *   This function should construct and return two arguments: the regression matrix $\Phi$ and the output vector $Y$ (which represents the target outputs for the model).
     *   The function should handle the initial conditions appropriately, considering the maximum delay ($max(n_a, n_b)$).
@@ -11,7 +15,7 @@ This activity builds upon the batch least squares system identification example.
     *   Improve the "Identification" section of the notebook by calling this new function with the training data to obtain `Phi_TRA` and `y_target_TRA`, and with the test data to obtain `Phi_TEST` and `y_target_TEST`.
     *   *Tip:* Consider a function like `matReg` in https://github.com/helonayala/narx_narendra/blob/main/narendra.ipynb.
 
-2.  **Implement a Free-Run Simulation Function:**
+b.  **Implement a Free-Run Simulation Function:**
 
     *   Create a Python function that performs a free-run simulation of the identified model. This function should take the estimated parameter vector ($\hat{\theta}$), the input signal for simulation, and the initial conditions for the simulation as arguments.
 
@@ -25,20 +29,15 @@ This activity builds upon the batch least squares system identification example.
 
     *   *Tip:* Consider a function like `freeRun` in https://github.com/helonayala/narx_narendra/blob/main/narendra.ipynb.
 
-3. **Generate metrics for evaluating predictions (both in OSA and FR)**
+c. **Generate metrics for evaluating predictions (both in OSA and FR)**
 
     *  Evaluate the model predictions using $RMSE$ and $R^2$ (check sklearn implementations for those functions)
 
     * Compare the spectrum of the measured signal, the predictions (OSA and FR), and the errors (OSA and FR). Compare the spectrum of the best and the worst models in terms of $R^2$.
 
-4.  **Apply to Real-World Data (Coupled Drives Data):**
-    *   Substitute the synthetic data generated in the notebook with the provided coupled drives data.
-    *   **Part a: Linearity Assessment:**
-        *   Use the data from the random steps experiment as your training data.
-        *   Use the data from the increasing/decreasing sequence of steps experiment as your test data.
-        *   Plot the predictions in free-run for training and test data against measured data. Based on the plot, assess whether a single linear model adequately represents the system behavior across different operating points (steps).
+2.  Apply to Real-World Data:
+    
+a. Substitute the synthetic data generated in the notebook with the dataset you'll use for your project. You may choose an example from the case studies section too. Ask the insctructor if unsure.
 
-    *   **Part b: Segmented Linear Models:**
-        *   Focus solely on the increasing/decreasing sequence of steps data for this part.
-        *   Try to obtain a separate linear model for each distinct operating envelope within this dataset (e.g., one model for each constant step level). You will need to segment the data accordingly.
-        *   Evaluate how well each individual linear model performs in predicting the output within its specific operating segment. You can plot the measured output for each segment against its corresponding free-run simulation.
+b. Try increasing model orders and compare the outcome (tables / figures). Check if it is possible to improve the error metrics in free-run simulation.
+
