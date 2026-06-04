@@ -44,6 +44,10 @@ chapters:
   - file: wind_blade
   - file: read_data_14_drone
   - file: IFAC2015_LTV
+- file: sysid_mpc
+  sections:
+  - file: bab_ann_mpc_approximation
+  - file: narx_mpc_14_drone
 - file: how_to_update
 
 
