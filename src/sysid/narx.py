@@ -286,6 +286,26 @@ class NARX:
             print("Warning: FROLS did not select any terms or failed to estimate parameters.")
         return self
 
+    def print(self):
+        """Print a summary of the fitted model: selected terms, parameters (theta)
+        and Error Reduction Ratio (ERR) per term."""
+        if self.theta_ is None or len(self.theta_) == 0:
+            print("No terms were selected by FROLS, or fitting failed.")
+            return
+        err = self.fit_results_['ERR_values']
+        print("=" * 55)
+        print("NARX model — selected terms and parameters")
+        print("=" * 55)
+        print(f"Max lag: {self._max_lag_internal_}  "
+              f"(ny={self.ny}, nu={self.nu}, l={self.poly_order_l})")
+        print(f"{'#':<4} {'Term':<30} {'theta':>10}  {'ERR (%)':>10}")
+        print("-" * 55)
+        for i, term in enumerate(self.selected_P_colnames_):
+            err_pct = err[i] * 100 if i < err.size else float('nan')
+            print(f"{i + 1:<4} {term:<30} {self.theta_[i]:>10.4f}  {err_pct:>10.6f}")
+        print("-" * 55)
+        print(f"{'Total ERR explained:':<35} {np.sum(err) * 100:>10.6f}%")
+
     def _form_single_candidate_row_values(self, current_y_lags_list, current_u_lags_list):
         current_P0_values = []
         if self.ny > 0: current_P0_values.extend(current_y_lags_list)
