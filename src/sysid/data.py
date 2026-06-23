@@ -47,6 +47,28 @@ _REGISTRY = {
         "kind": "csv",
         "cols": {"time": 0, "y": 1, "u": 2, "ref": 3},
     },
+    # Closed-loop HIL acquisitions (columns: Tempo_s, Referencia, Saida_y,
+    # Controle_u; time in seconds, ~100 Hz).
+    ("quarter_drone", "semi_estatica"): {
+        "path": "quarter_drone/sinal1_semi_estatica_malha_fechada.csv",
+        "kind": "csv",
+        "cols": {"time": 0, "ref": 1, "y": 2, "u": 3},
+    },
+    ("quarter_drone", "degraus"): {
+        "path": "quarter_drone/sinal2_degraus_malha_fechada.csv",
+        "kind": "csv",
+        "cols": {"time": 0, "ref": 1, "y": 2, "u": 3},
+    },
+    ("quarter_drone", "swept_sine"): {
+        "path": "quarter_drone/sinal3_swept_sine_malha_fechada.csv",
+        "kind": "csv",
+        "cols": {"time": 0, "ref": 1, "y": 2, "u": 3},
+    },
+    ("quarter_drone", "multiseno"): {
+        "path": "quarter_drone/sinal4_multiseno_malha_fechada.csv",
+        "kind": "csv",
+        "cols": {"time": 0, "ref": 1, "y": 2, "u": 3},
+    },
     ("ball_and_hoop", "closedLoop"): {
         "path": "ball_and_hoop/closedLoop.mat",
         "kind": "mat",
