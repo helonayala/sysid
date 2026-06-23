@@ -16,6 +16,7 @@ execute:
     # is intentionally NOT here: it has no committed outputs, so it must keep
     # executing or its page would be blank.)
     - "wind_blade.ipynb"            # external Zenodo download (~600s, failed)
+    - "narx_ball_and_beam.ipynb"    # external bab_datasets download + FROLS/FR sim
     - "IFAC2015_LTV.ipynb"          # external KTH download (~200s)
     - "narmax_activity_2.ipynb"     # free-run NARX simulation (~113s)
     - "narx_mpc_14_drone.ipynb"     # MPC / ipopt loop (~75s)

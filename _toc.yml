@@ -20,7 +20,6 @@ chapters:
   - file: orthogonal_least_squares 
   - file: frols 
   - file: narx_frols_model
-  - file: narmax_example_drone
   - file: narmax_activities
   - file: narmax_activity_1
   - file: narmax_activity_2
@@ -46,8 +45,14 @@ chapters:
   - file: IFAC2015_LTV
 - file: sysid_mpc
   sections:
-  - file: bab_ann_mpc_approximation
-  - file: narx_mpc_14_drone
+  - file: mpc_ball_and_beam
+    sections:
+    - file: narx_ball_and_beam
+    - file: bab_ann_mpc_approximation
+  - file: mpc_quarter_drone
+    sections:
+    - file: narmax_example_drone
+    - file: narx_mpc_14_drone
 - file: how_to_update
 
 
