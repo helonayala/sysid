@@ -11,7 +11,7 @@ torch==2.4.1
 scikit-learn==1.5.2
 jax==0.4.30
 jaxlib==0.4.30
-diffrax==0.7.0
+diffrax==0.6.1
 control==0.10.2
 casadi==3.6.7
 lvm_read==1.23
