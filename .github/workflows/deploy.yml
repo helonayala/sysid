@@ -5,9 +5,17 @@ on:
     branches:
       - main
 
+# Only one deploy at a time; a new push cancels an in-progress run so rapid
+# commits don't pile up and stall the GitHub Pages deployment queue.
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
+
 jobs:
   deploy-book:
     runs-on: ubuntu-latest
+    # Hard cap so the job can never hang for tens of minutes again.
+    timeout-minutes: 25
 
     permissions:
       pages: write

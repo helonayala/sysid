@@ -9,7 +9,12 @@ logo: logo.png
 # See https://jupyterbook.org/content/execute.html
 execute:
   execute_notebooks: force
-  timeout: 600  # seconds per cell; free-run NARX simulations can be slow
+  timeout: 300  # seconds per cell; free-run NARX simulations can be slow
+  exclude_patterns:
+    # External-reference notebooks that download large datasets at runtime
+    # (slow/flaky in CI). They render their committed outputs instead of
+    # re-executing on every build.
+    - "wind_blade.ipynb"
 
 # Define the name of the latex output file for PDF builds
 latex:
