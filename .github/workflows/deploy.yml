@@ -30,6 +30,8 @@ jobs:
             python -m pip install -r requirements.txt
           fi
           python -m pip install "jupyter-book==1.0.2" "sphinx==7.3.7" "myst-nb==1.1.1"
+          # Install the local sysid package so notebooks can 'from sysid import ...'
+          python -m pip install -e .
 
       - name: Build the book
         run: |
