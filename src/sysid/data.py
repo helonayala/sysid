@@ -41,11 +41,13 @@ _REGISTRY = {
         "path": "quarter_drone/dados_14_drone.csv",
         "kind": "csv",
         "cols": {"time": 0, "y": 1, "u": 2, "ref": 3},
+        "time_scale": 1e-3,  # tempo_ms -> seconds
     },
     ("quarter_drone", "seq"): {
         "path": "quarter_drone/14_drone_seq_20260529_195254.csv",
         "kind": "csv",
         "cols": {"time": 0, "y": 1, "u": 2, "ref": 3},
+        "time_scale": 1e-3,  # tempo_ms -> seconds
     },
     # Closed-loop HIL acquisitions (columns: Tempo_s, Referencia, Saida_y,
     # Controle_u; time in seconds, ~100 Hz).
@@ -144,17 +146,18 @@ def readData(case_study, dataset=None, *, return_ref=False):
         )
 
     fpath = _resolve(spec["path"])
+    time_scale = spec.get("time_scale", 1.0)  # returned time is always in seconds
 
     if spec["kind"] == "csv":
         arr = np.genfromtxt(fpath, delimiter=",", skip_header=1)
         c = spec["cols"]
-        time = arr[:, c["time"]]
+        time = arr[:, c["time"]] * time_scale
         y = arr[:, c["y"]]
         u = arr[:, c["u"]]
         ref = arr[:, c["ref"]] if "ref" in c else np.array([])
     elif spec["kind"] == "mat":
         mat = scipy.io.loadmat(fpath)
-        time = np.asarray(mat["time"], dtype=float).reshape(-1)
+        time = np.asarray(mat["time"], dtype=float).reshape(-1) * time_scale
         u = np.asarray(mat["u"], dtype=float).reshape(-1)
         y = np.asarray(mat["y"], dtype=float).reshape(-1)
         yref = mat.get("yref")
