@@ -11,10 +11,15 @@ execute:
   execute_notebooks: force
   timeout: 300  # seconds per cell; free-run NARX simulations can be slow
   exclude_patterns:
-    # External-reference notebooks that download large datasets at runtime
-    # (slow/flaky in CI). They render their committed outputs instead of
-    # re-executing on every build.
-    - "wind_blade.ipynb"
+    # Slow / external-data notebooks: not re-executed in CI. They render the
+    # outputs committed from local/Colab runs instead. (grey_box_activity_2b
+    # is intentionally NOT here: it has no committed outputs, so it must keep
+    # executing or its page would be blank.)
+    - "wind_blade.ipynb"            # external Zenodo download (~600s, failed)
+    - "IFAC2015_LTV.ipynb"          # external KTH download (~200s)
+    - "narmax_activity_2.ipynb"     # free-run NARX simulation (~113s)
+    - "narx_mpc_14_drone.ipynb"     # MPC / ipopt loop (~75s)
+    - "bab_ann_mpc_approximation.ipynb"  # ANN-MPC / casadi (~51s)
 
 # Define the name of the latex output file for PDF builds
 latex:
