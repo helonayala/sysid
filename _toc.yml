@@ -56,6 +56,7 @@ chapters:
     - file: narmax_example_drone
     - file: gain_scheduling_14_drone
     - file: narx_mpc_14_drone
+    - file: mpc_grey_box_14_drone
 - file: how_to_update
 
 
