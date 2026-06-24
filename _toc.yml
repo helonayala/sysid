@@ -54,6 +54,7 @@ chapters:
     - file: phys_14_drone   
     - file: node_14_drone
     - file: narmax_example_drone
+    - file: gain_scheduling_14_drone
     - file: narx_mpc_14_drone
 - file: how_to_update
 
