@@ -26,7 +26,6 @@ chapters:
 - file: grey_box
   sections:
   - file: lagrange
-  - file: lagrange_quarter_drone
   - file: multiple_shooting
   - file: grey-box-activity
   - file: grey_box_activity_1
@@ -51,9 +50,10 @@ chapters:
     - file: bab_ann_mpc_approximation
   - file: mpc_quarter_drone
     sections:
-    - file: narmax_example_drone
+    - file: lagrange_quarter_drone
     - file: phys_14_drone   
     - file: node_14_drone
+    - file: narmax_example_drone
     - file: narx_mpc_14_drone
 - file: how_to_update
 
