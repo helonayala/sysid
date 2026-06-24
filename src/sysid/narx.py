@@ -265,13 +265,44 @@ class NARX:
         self._max_lag_internal_ = max(self.ny, self.nu) if self.ny > 0 or self.nu > 0 else 0
         self.fit_results_ = None
 
-    def fit(self, u_train, y_train):
-        u_train_np = np.asarray(u_train, dtype=float)
-        y_train_np = np.asarray(y_train, dtype=float)
+    def fit(self, u, y=None):
+        """Identify the NARX model (structure selection + parameter estimation).
 
-        P_cand_matrix, self.P_candidate_colnames_, y_target_train = regMatNARX(
-            u_train_np, y_train_np, self.nu, self.ny, self.poly_order_l
-        )
+        Two input forms are accepted:
+
+        * Single dataset:   ``fit(u, y)`` with array-like ``u`` and ``y``.
+        * Multiple datasets: ``fit(data)`` where ``data`` is a list of
+          ``(u_i, y_i)`` pairs. Each dataset's regression matrix is built
+          independently (so no regressors cross dataset boundaries) and the
+          rows are stacked, so FROLS selects the structure and estimates the
+          parameters jointly over all datasets.
+        """
+        if y is not None:
+            datasets = [(u, y)]
+        else:
+            datasets = list(u)  # list of (u_i, y_i) pairs
+
+        P_blocks, Y_blocks = [], []
+        colnames = None
+        for u_i, y_i in datasets:
+            u_i = np.asarray(u_i, dtype=float)
+            y_i = np.asarray(y_i, dtype=float)
+            P_i, colnames, y_i_target = regMatNARX(
+                u_i, y_i, self.nu, self.ny, self.poly_order_l
+            )
+            if P_i.shape[0] == 0:
+                continue  # dataset shorter than the model lags; skip it
+            P_blocks.append(P_i)
+            Y_blocks.append(y_i_target)
+
+        if not P_blocks:
+            raise ValueError(
+                "No usable data: every dataset is shorter than the model lags."
+            )
+
+        P_cand_matrix = np.vstack(P_blocks)
+        y_target_train = np.concatenate(Y_blocks)
+        self.P_candidate_colnames_ = colnames
 
         frols_results = frols_py(
             P_cand_matrix, y_target_train, self.n_components, self.P_candidate_colnames_
