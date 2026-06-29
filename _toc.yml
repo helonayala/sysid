@@ -34,6 +34,7 @@ chapters:
 - file: ann
   sections:
   - file: ANN_narx
+  - file: Pedagogical_example_NODE
   - file: ANN_activities
 - file: case_studies
   sections:
