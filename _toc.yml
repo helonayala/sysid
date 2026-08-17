@@ -59,6 +59,7 @@ chapters:
     - file: pid_gain_scheduling_14_drone
     - file: narx_mpc_14_drone
     - file: mpc_grey_box_14_drone
+  - file: mpc_activities
 - file: how_to_update
 
 
